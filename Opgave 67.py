@@ -82,6 +82,8 @@ while running:
     screen.blit(text_uitploeg, (WIDTH - 50 - text_uitploeg.get_width(), HEIGHT - 150))
     screen.blit(sets_thuisploeg, (text_thuisploeg.get_width() + 60, HEIGHT - 120))
     screen.blit(sets_uitploeg, (WIDTH - text_uitploeg.get_width() - 60, HEIGHT - 120))
-    screen.blit(logo_thuis, (logo , text_thuisploeg.get_height() -  5))
+    screen.blit(logo_thuis, (20 , text_thuisploeg.get_height() -  5))
+    screen .blit(logo_uit, (700, text_uitploeg.get_height() - 5))
+    
 
     pygame.display.flip()
