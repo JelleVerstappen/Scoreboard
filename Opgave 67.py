@@ -30,6 +30,10 @@ font_sets = pygame.font.SysFont(font_type, font_size_sets)
 logo_thuis = pygame.image.load("Maaseik.png")
 logo_uit = pygame.image.load("Roeselare.png")
 
+logo_thuis = pygame.transform.smoothscale(logo_thuis,(200, 200))
+logo_uit = pygame.transform.smoothscale(logo_uit,(200, 200))
+
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -70,20 +74,25 @@ while running:
         xpos = WIDTH / 2 - text3.get_width() / 2
         ypos = HEIGHT / 2 - text3.get_height() / 2 + 100
         screen.blit(text3, (xpos, ypos))
-
-
-
     
-    text_thuisploeg = font.render(f"{ploegnaam_thuis} {score_thuis}" , True, text_colour)
-    text_uitploeg = font.render(f"{score_uit} {ploegnaam_uit}", True, text_colour)
+    text_thuisploeg = font.render(f"{ploegnaam_thuis}" , True, text_colour)
+    text_uitploeg = font.render(f"{ploegnaam_uit}", True, text_colour)
+
+    score_home = font.render(f"{score_thuis}", True, text_colour)
+    score_away = font.render(f"{score_uit}", True, text_colour)
     sets_thuisploeg = font_sets.render(f"{sets_thuis} ", True, text_colour)
     sets_uitploeg = font_sets.render(f"{sets_uit}", True, text_colour)
-    screen.blit(text_thuisploeg, (50 , HEIGHT - 150))
-    screen.blit(text_uitploeg, (WIDTH - 50 - text_uitploeg.get_width(), HEIGHT - 150))
-    screen.blit(sets_thuisploeg, (text_thuisploeg.get_width() + 60, HEIGHT - 120))
-    screen.blit(sets_uitploeg, (WIDTH - text_uitploeg.get_width() - 60, HEIGHT - 120))
+
+    screen.blit(text_thuisploeg, (30 , HEIGHT - 300))
+    screen.blit(text_uitploeg, (WIDTH - 30 - text_uitploeg.get_width(), HEIGHT - 300))
     screen.blit(logo_thuis, (20 , text_thuisploeg.get_height() -  5))
-    screen .blit(logo_uit, (700, text_uitploeg.get_height() - 5))
+    screen .blit(logo_uit, (WIDTH - logo_uit.get_width() - 20, text_uitploeg.get_height() - 5))
+
+    screen.blit(score_home, (WIDTH/2 - 50, HEIGHT - 200))
+    screen.blit(score_away, (WIDTH/2 + 50, HEIGHT - 200))
+    screen.blit(sets_thuisploeg, (WIDTH/2 - 20, HEIGHT - 150))
+    screen.blit(sets_uitploeg, (WIDTH/2 + 20, HEIGHT - 150))
+
     
 
     pygame.display.flip()
