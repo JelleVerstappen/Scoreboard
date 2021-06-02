@@ -12,25 +12,26 @@ wid.show()
 
 layout=QtWidgets.QFormLayout(wid)
 
-game = QtWidgets.QLabel("Naam wedstrijd")
-text = QtWidgets.QTextEdit()
-layout.addRow(game,text)
-
 Team_thuis = QtWidgets.QLabel("Team thuis")
-text2 = QtWidgets.QTextEdit()
-layout.addRow(Team_thuis,text2)
+home_team = QtWidgets.QTextEdit()
+layout.addRow(Team_thuis,home_team)
 
 Team_uit = QtWidgets.QLabel("Team uit")
-text3 = QtWidgets.QTextEdit()
-layout.addRow(Team_uit, text3)
+away_team = QtWidgets.QTextEdit()
+layout.addRow(Team_uit, away_team)
 
 Logo_thuis = QtWidgets.QLabel("Logo thuis")
-text4 = QtWidgets.QTextEdit()
-layout.addRow(Logo_thuis,text4)
+home_logo  = QtWidgets.QTextEdit()
+layout.addRow(Logo_thuis,home_logo)
 
 Logo_uit = QtWidgets.QLabel("Logo uit")
-text5 = QtWidgets.QTextEdit()
-layout.addRow(Logo_uit, text5)
+away_logo = QtWidgets.QTextEdit()
+layout.addRow(Logo_uit, away_logo)
+
+Light = QtWidgets.QPushButton('Light Mode', wid)
+Dark = QtWidgets.QPushButton('Dark Mode', wid)
+layout.addWidget(Light)
+layout.addWidget(Dark)
 
 Save = QtWidgets.QPushButton('Save', wid)
 layout.addWidget(Save)
@@ -38,6 +39,10 @@ Cancel = QtWidgets.QPushButton('Cancel', wid)
 layout.addWidget(Cancel)
 
 def Saved():
+    config["TeamA"]["naam"] = home_team.toPlainText()
+    config["TeamB"]["naam"] = away_team.toPlainText()
+    config["TeamA"]["logo"] = home_logo.toPlainText()
+    config["TeamB"]["logo"] = away_logo.toPlainText()
     print("Saved")
 
 def Cancelled():
