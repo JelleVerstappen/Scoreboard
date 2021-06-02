@@ -28,11 +28,6 @@ Logo_uit = QtWidgets.QLabel("Logo uit")
 away_logo = QtWidgets.QTextEdit()
 layout.addRow(Logo_uit, away_logo)
 
-Light = QtWidgets.QPushButton('Light Mode', wid)
-Dark = QtWidgets.QPushButton('Dark Mode', wid)
-layout.addWidget(Light)
-layout.addWidget(Dark)
-
 Save = QtWidgets.QPushButton('Save', wid)
 layout.addWidget(Save)
 Cancel = QtWidgets.QPushButton('Cancel', wid)
@@ -50,24 +45,8 @@ def Saved():
 def Cancelled():
     print("Cancelled")
 
-def DarkMode():
-    config["Preferences"]["background"] = "black"
-    config["Preferences"]["text_colour"] = "white"
-    configfile = open("config.ini", "w")
-    config.write(configfile)
-    print("Dark Mode")
-
-def LightMode():
-    config["Preferences"]["background"] = "white"
-    config["Preferences"]["text_colour"] = "black"
-    configfile = open("config.ini", "w")
-    config.write(configfile)
-    print("Light Mode")
-
-
 Save.clicked.connect(Saved)
 Cancel.clicked.connect(Cancelled)
-Dark.clicked.connect(DarkMode)
-Light.clicked.connect(LightMode)
+
 
 app.exec_()

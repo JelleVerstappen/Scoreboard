@@ -9,6 +9,7 @@ ploegnaam_uit = config["TeamB"]["naam"]
 logo_B = config["TeamB"]["logo"]
 font_type = config["Preferences"]["font"]
 font_size = config["Preferences"].getint("font_size")
+font_size_score = config["Preferences"].getint("font_size_score")
 font_size_sets = config["Preferences"].getint("font_size_sets")
 text_colour = config["Preferences"]["text_colour"]
 background = config["Preferences"]["background"]
@@ -26,12 +27,15 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 font = pygame.font.SysFont(font_type, font_size)
+font_score = pygame.font.SysFont(font_type, font_size_score)
 font_sets = pygame.font.SysFont(font_type, font_size_sets)
-logo_thuis = pygame.image.load("Maaseik.png")
-logo_uit = pygame.image.load("Roeselare.png")
+logo_thuis = pygame.image.load(logo_A)
+logo_uit = pygame.image.load(logo_B)
+BG = pygame.image.load(background)
 
 logo_thuis = pygame.transform.smoothscale(logo_thuis,(200, 200))
 logo_uit = pygame.transform.smoothscale(logo_uit,(200, 200))
+BG = pygame.transform.smoothscale(BG,(WIDTH, HEIGHT))
 
 
 running = True
@@ -61,7 +65,7 @@ while running:
         score_thuis = 0
         sets_uit = sets_uit + 1
 
-    screen.fill(background)
+    screen.fill("white")
 
     if sets_thuis == 3:
         text3 = font.render(f"{ploegnaam_thuis} wint!", True, text_colour)
@@ -78,18 +82,20 @@ while running:
     text_thuisploeg = font.render(f"{ploegnaam_thuis}" , True, text_colour)
     text_uitploeg = font.render(f"{ploegnaam_uit}", True, text_colour)
 
-    score_home = font.render(f"{score_thuis}", True, text_colour)
-    score_away = font.render(f"{score_uit}", True, text_colour)
+    score_home = font_score.render(f"{score_thuis}", True, text_colour)
+    score_away = font_score.render(f"{score_uit}", True, text_colour)
     sets_thuisploeg = font_sets.render(f"{sets_thuis} ", True, text_colour)
     sets_uitploeg = font_sets.render(f"{sets_uit}", True, text_colour)
 
-    screen.blit(text_thuisploeg, (30 , HEIGHT - 300))
-    screen.blit(text_uitploeg, (WIDTH - 30 - text_uitploeg.get_width(), HEIGHT - 300))
-    screen.blit(logo_thuis, (20 , text_thuisploeg.get_height() -  5))
-    screen .blit(logo_uit, (WIDTH - logo_uit.get_width() - 20, text_uitploeg.get_height() - 5))
+    screen.blit(BG, (0,0))
 
-    screen.blit(score_home, (WIDTH/2 - 50, HEIGHT - 200))
-    screen.blit(score_away, (WIDTH/2 + 50, HEIGHT - 200))
+    screen.blit(text_thuisploeg, (110 , HEIGHT - 300))
+    screen.blit(text_uitploeg, (WIDTH - (160 + text_uitploeg.get_width()), HEIGHT - 300))
+    screen.blit(logo_thuis, (140 , 20))
+    screen .blit(logo_uit, (WIDTH - 350, 20))
+
+    screen.blit(score_home, (WIDTH/2 - 250, HEIGHT - 200))
+    screen.blit(score_away, (WIDTH/2 + 250, HEIGHT - 200))
     screen.blit(sets_thuisploeg, (WIDTH/2 - 20, HEIGHT - 150))
     screen.blit(sets_uitploeg, (WIDTH/2 + 20, HEIGHT - 150))
 
