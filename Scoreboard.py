@@ -94,11 +94,9 @@ while running:
     screen.blit(logo_thuis, (140 , 20))
     screen .blit(logo_uit, (WIDTH - 350, 20))
 
-    screen.blit(score_home, (WIDTH/2 - 250, HEIGHT - 200))
-    screen.blit(score_away, (WIDTH/2 + 250, HEIGHT - 200))
-    screen.blit(sets_thuisploeg, (WIDTH/2 - 20, HEIGHT - 150))
-    screen.blit(sets_uitploeg, (WIDTH/2 + 20, HEIGHT - 150))
-
-    
+    screen.blit(score_home, (WIDTH/2 - 300, HEIGHT - 250))
+    screen.blit(score_away, (WIDTH/2 + 240, HEIGHT - 250))
+    screen.blit(sets_thuisploeg, (WIDTH/2 - 200, HEIGHT - 100))
+    screen.blit(sets_uitploeg, (WIDTH/2 + 200, HEIGHT - 100))
 
     pygame.display.flip()
