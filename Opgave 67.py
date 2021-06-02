@@ -13,7 +13,7 @@ font_size_sets = config["Preferences"].getint("font_size_sets")
 text_colour = config["Preferences"]["text_colour"]
 background = config["Preferences"]["background"]
 
-WIDTH = 800
+WIDTH = 900
 HEIGHT = 600
 
 score_thuis = 0
