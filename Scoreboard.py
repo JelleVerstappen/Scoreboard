@@ -50,9 +50,9 @@ while running:
                 sets_thuis = 0
                 sets_uit = 0
                 set_score = 5
-            elif event.key == pygame.K_RIGHT:
-                score_thuis = score_thuis + 1
             elif event.key == pygame.K_LEFT:
+                score_thuis = score_thuis + 1
+            elif event.key == pygame.K_RIGHT:
                 score_uit = score_uit + 1
 
     if score_thuis >= set_score and score_thuis >= score_uit + 2:
