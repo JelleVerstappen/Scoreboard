@@ -21,7 +21,7 @@ score_thuis = 0
 score_uit = 0
 sets_thuis = 0
 sets_uit = 0
-set_score = 5
+set_score = 25
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -49,7 +49,7 @@ while running:
                 score_uit = 0
                 sets_thuis = 0
                 sets_uit = 0
-                set_score = 5
+                set_score = 25
             elif event.key == pygame.K_LEFT:
                 score_thuis = score_thuis + 1
             elif event.key == pygame.K_RIGHT:
@@ -65,15 +65,26 @@ while running:
         score_thuis = 0
         sets_uit = sets_uit + 1
 
+    
     screen.fill("white")
 
-    if sets_thuis == 3:
+    if sets_thuis >= 3:
+        sets_thuis = 0
+        sets_uit = 0
+        score_thuis = 0
+        score_uit = 0
+
         text3 = font.render(f"{ploegnaam_thuis} wint!", True, text_colour)
         xpos = WIDTH / 2 - text3.get_width() / 2
         ypos = HEIGHT / 2 - text3.get_height() / 2 + 100
         screen.blit(text3, (xpos, ypos))
         
-    if sets_uit == 3:
+    if sets_uit >= 3:
+        sets_thuis = 0
+        sets_uit = 0
+        score_thuis = 0
+        score_uit = 0
+
         text3 = font.render(f"{ploegnaam_uit} wint!", True, text_colour)
         xpos = WIDTH / 2 - text3.get_width() / 2
         ypos = HEIGHT / 2 - text3.get_height() / 2 + 100
